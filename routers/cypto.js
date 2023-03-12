@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
+const NodeCache = require('node-cache');
+const cache = new NodeCache({ stdTTL: 30 , checkperiod: 30 });
+
 router.get('/',(req,res)=>{
     res.send("hello api cypto price")
 })
@@ -23,6 +26,11 @@ router.get('/price/:query', async (req, res) => {
     if(!query) return res.status(404).json({ error: 'Invalid parameter' });
 
     const symbol = query.toUpperCase();
+    const cachedData = cache.get(symbol);
+    if (cachedData) {
+      return res.json({ result: cachedData.result, source: 'cache' });
+    }
+
     const urlSearch = `https://api.coingecko.com/api/v3/search?query=${symbol}`;
 
     const responesSearch = await fetch(urlSearch);
@@ -38,7 +46,8 @@ router.get('/price/:query', async (req, res) => {
       currency: "USD",
       price: dataCoin?.market_data?.current_price?.usd || undefined
     }
-    res.send(result);
+    cache.set(symbol, { result });
+     return res.json({ result, source:'api'});
 });
 
 module.exports = router;

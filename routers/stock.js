@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const yahooFinance = require('yahoo-finance');
 
 const NodeCache = require('node-cache');
-const yahooFinance = require('yahoo-finance');
 const cache = new NodeCache({ stdTTL: 30 , checkperiod: 30 });
 
 router.get('/',(req,res)=>{
