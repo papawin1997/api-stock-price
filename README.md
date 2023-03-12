@@ -24,20 +24,17 @@ can import postman.json file to example
 http://localhost:3000/stock/price/symbol
 
 example symbol 
-- Apple Inc. (AAPL)
-- Microsoft Corporation (MSFT)
-- Amazon.com Inc. (AMZN)
-- Alphabet Inc. Class A (GOOGL)
-- Facebook Inc. Class A (FB)
+- Apple Inc.: AAPL
+- Microsoft Corporation: MSFT
+- Amazon.com Inc.: AMZN
+- Alphabet Inc.: GOOGL
 
 
 ## Cypto Price
 http://localhost:3000/cypto/price/symbol
 
 example symbol 
-- Bitcoin: bitcoin
-- Ethereum: ethereum
-- Binance Coin: binancecoin
-- Cardano: cardano
-- Dogecoin: dogecoin
-- Polkadot: polkadot
+- Bitcoin: BTC
+- Ethereum: ETH
+- Binance BNB
+- Dogecoin: DOGE
